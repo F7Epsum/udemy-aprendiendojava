@@ -1,11 +1,12 @@
-package Objetos.Clase12Runnable;
+package Objetos.Clase16Abstractas;
 
-public class Media {
+public abstract class Media {
 
     private String title;
     private String genre;
     private int duration;
     private String synopsis;
+    private String content = "";
 
     public Media(String title, String genre, int duration) {
         this.title = title;
@@ -45,33 +46,17 @@ public class Media {
         this.duration = duration;
     }
 
-    public void play(){
-        printSomething("Playing " + title);
-    }
+    public abstract void play();
 
     public void pause(){
        printSomething("Pause " + title);
     }
 
-    public void download(){
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Downloading " + title);
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                System.out.println(title + " Downloaded! Eres un pirata xd\n");
-            }
-        });
-
-        thread.start();
-
+    public void setContent(String content) {
+        this.content = content;
     }
 
-    private void printSomething(String something){
+    public void printSomething(String something){
         System.out.println(something);
     }
 

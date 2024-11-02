@@ -1,4 +1,4 @@
-package Objetos.Clase12Runnable;
+package Objetos.Clase14Interfaces2;
 
 public class Media {
 
@@ -6,6 +6,7 @@ public class Media {
     private String genre;
     private int duration;
     private String synopsis;
+    private String content = "";
 
     public Media(String title, String genre, int duration) {
         this.title = title;
@@ -53,22 +54,8 @@ public class Media {
        printSomething("Pause " + title);
     }
 
-    public void download(){
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                System.out.println("Downloading " + title);
-                try {
-                    Thread.sleep(5000);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                System.out.println(title + " Downloaded! Eres un pirata xd\n");
-            }
-        });
-
-        thread.start();
-
+    public void setContent(String content) {
+        this.content = content;
     }
 
     private void printSomething(String something){
